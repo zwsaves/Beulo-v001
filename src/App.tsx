@@ -1,4 +1,3 @@
-import { PenLine } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -21,19 +20,30 @@ function App() {
   return (
     <div className="min-h-screen bg-white p-4">
       <div
-        className="h-full min-h-[calc(100vh-2rem)] relative overflow-hidden"
+        className="relative overflow-hidden"
         style={{
           backgroundImage: 'url(https://gwuoficbgouqjvqwtwtp.supabase.co/storage/v1/object/public/WEB_IMGS/LANDING%20PAGE%20IMGS/1.avif)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          borderRadius: '30px'
+          borderRadius: '30px',
+          height: '800px'
         }}
       >
+      {/* Sky gradient overlay at bottom */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to top, rgba(135, 206, 235, 0.5), transparent)',
+          borderBottomLeftRadius: '30px',
+          borderBottomRightRadius: '30px'
+        }}
+      />
+
       {/* Hero Section */}
-      <div className="container mx-auto px-8 pt-32 pb-16">
+      <div className="container mx-auto px-8 pt-32 pb-16 relative z-10">
         <div className="text-center mb-12">
-          <h1 className="text-white text-6xl font-bold mb-4" style={{ fontFamily: 'Lexend, sans-serif' }}>
+          <h1 className="text-white text-6xl mb-4" style={{ fontFamily: 'Lexend, sans-serif', fontWeight: 400 }}>
             a place to full fill your
           </h1>
           <h2 className="text-white text-6xl italic font-light mb-8" style={{ fontFamily: 'Gwendolyn, cursive', fontWeight: 700 }}>
@@ -43,18 +53,11 @@ function App() {
             Be a Fapstar, let us{' '}
             <span
               key={wordIndex}
-              className="inline-block transition-all duration-500 ease-in-out animate-fade"
-              style={{
-                animation: 'fadeInOut 2s ease-in-out infinite'
-              }}
+              className="inline-block transition-all duration-1000 ease-in-out"
             >
               {currentWord}
             </span>
           </p>
-          <button className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors flex items-center gap-2 mx-auto shadow-lg">
-            <PenLine className="w-5 h-5" />
-            Start Writing
-          </button>
         </div>
 
         {/* Product Showcase */}
