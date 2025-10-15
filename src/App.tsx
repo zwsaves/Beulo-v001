@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Moon, Sun } from 'lucide-react';
 
 function App() {
   const [currentWord, setCurrentWord] = useState('satisfy you');
   const words = ['satisfy you', 'pleasure you', 'show you happiness'];
   const [wordIndex, setWordIndex] = useState(0);
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [currentTime, setCurrentTime] = useState('');
+  const [timezone, setTimezone] = useState('');
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,8 +19,44 @@ function App() {
     setCurrentWord(words[wordIndex]);
   }, [wordIndex]);
 
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      setCurrentTime(`${hours}:${minutes}:${seconds}`);
+
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const cityMap: { [key: string]: string } = {
+        'America/New_York': 'NYC',
+        'America/Los_Angeles': 'LAX',
+        'America/Chicago': 'CHI',
+        'Asia/Kolkata': 'DEL',
+        'Europe/London': 'LON',
+        'Europe/Paris': 'PAR',
+        'Asia/Tokyo': 'TYO',
+        'Asia/Dubai': 'DXB',
+        'Australia/Sydney': 'SYD',
+        'Asia/Singapore': 'SIN',
+        'Asia/Hong_Kong': 'HKG',
+        'America/Toronto': 'TOR',
+        'Europe/Berlin': 'BER',
+        'Asia/Shanghai': 'SHA',
+        'Europe/Moscow': 'MOW'
+      };
+
+      setTimezone(cityMap[tz] || tz.split('/').pop()?.substring(0, 3).toUpperCase() || 'UTC');
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className={`min-h-screen p-4 transition-colors duration-300 ${isDarkTheme ? 'bg-gray-900' : 'bg-white'}`}>
+    <div className="min-h-screen p-4 bg-white">
       <div
         className="relative overflow-hidden"
         style={{
@@ -40,17 +76,14 @@ function App() {
             alt="Logo"
             className="h-16 w-auto"
           />
-          <button
-            onClick={() => setIsDarkTheme(!isDarkTheme)}
-            className="bg-white/20 backdrop-blur-sm p-3 rounded-full hover:bg-white/30 transition-all duration-300 border border-white/30"
-            aria-label="Toggle theme"
-          >
-            {isDarkTheme ? (
-              <Sun className="w-6 h-6 text-white" />
-            ) : (
-              <Moon className="w-6 h-6 text-white" />
-            )}
-          </button>
+          <div className="flex items-center gap-3 bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full border border-white/30">
+            <span className="text-white text-2xl font-bold tracking-wider" style={{ fontFamily: 'monospace', letterSpacing: '0.1em' }}>
+              {currentTime}
+            </span>
+            <span className="text-white/80 text-sm font-semibold uppercase">
+              {timezone}
+            </span>
+          </div>
         </div>
       </div>
 
