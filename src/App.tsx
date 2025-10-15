@@ -77,14 +77,14 @@ function App() {
             className="h-16 w-auto"
           />
           <div className="flex items-center gap-2">
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="10" strokeWidth="2"/>
               <path strokeWidth="2" strokeLinecap="round" d="M12 6v6l4 2"/>
             </svg>
-            <span className="text-white text-lg font-medium" style={{ fontFamily: 'monospace', letterSpacing: '0.05em' }}>
+            <span className="text-white" style={{ fontFamily: 'monospace', letterSpacing: '0.05em', fontSize: '14px' }}>
               {currentTime}
             </span>
-            <span className="text-white text-lg font-medium uppercase">
+            <span className="text-white uppercase" style={{ fontFamily: 'Lexend, sans-serif', fontWeight: 400, fontSize: '14px' }}>
               {timezone}
             </span>
           </div>
