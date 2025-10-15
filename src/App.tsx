@@ -134,12 +134,15 @@ function App() {
       </div>
       </div>
 
-      {/* Gradient Box */}
+      {/* Background Image Box */}
       <div className="mt-8 mx-auto" style={{ width: '400px', height: '400px' }}>
         <div
           className="w-full h-full rounded-3xl"
           style={{
-            background: 'linear-gradient(180deg, #4BA3C3 0%, #2B7A9B 25%, #1E5F7E 50%, #164A61 75%, #0D3647 100%)',
+            backgroundImage: 'url(https://gwuoficbgouqjvqwtwtp.supabase.co/storage/v1/object/public/WEB_IMGS/LANDING%20PAGE%20IMGS/1.avif)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
           }}
         />
       </div>
