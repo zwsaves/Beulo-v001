@@ -76,11 +76,15 @@ function App() {
             alt="Logo"
             className="h-16 w-auto"
           />
-          <div className="flex items-center gap-3 bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full border border-white/30">
-            <span className="text-white text-2xl font-bold tracking-wider" style={{ fontFamily: 'monospace', letterSpacing: '0.1em' }}>
+          <div className="flex items-center gap-2">
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" strokeWidth="2"/>
+              <path strokeWidth="2" strokeLinecap="round" d="M12 6v6l4 2"/>
+            </svg>
+            <span className="text-white text-lg font-medium" style={{ fontFamily: 'monospace', letterSpacing: '0.05em' }}>
               {currentTime}
             </span>
-            <span className="text-white/80 text-sm font-semibold uppercase">
+            <span className="text-white text-lg font-medium uppercase">
               {timezone}
             </span>
           </div>
